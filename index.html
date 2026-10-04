@@ -14,6 +14,8 @@
   <style>
     .window.minimized{display:none}
     .window.maximized{left:0;top:0;transform:none;width:100%;height:calc(100% - 58px);min-height:0;border-radius:0}
+    .window.app-mode{background:#101114;color:#f5f5f5;border-color:#ffffff24}.window.app-mode .titlebar{background:#17181b;color:#f5f5f5}.window.app-mode .brand,.window.app-mode .win-controls button{color:#eee}.window.app-mode .win-controls button:hover{background:#ffffff1c}.window.app-mode .tabs,.window.app-mode .toolbar,.window.app-mode .status{display:none}.app-view{display:none;flex:1;min-height:0;margin:0 9px 9px;border-radius:8px;overflow:hidden;background:#111;position:relative}.window.app-mode .app-view{display:flex}.window.app-mode .view{display:none}.app-rail{width:204px;flex:none;padding:20px 12px;background:#18191d;display:flex;flex-direction:column;gap:8px}.app-identity{display:flex;align-items:center;gap:10px;padding:2px 9px 20px;font-weight:700;font-size:17px}.app-logo{width:34px;height:34px;display:grid;place-items:center;border-radius:10px;background:#ff0033;color:white;font-size:17px}.app-mode.spotify .app-logo{background:#1ed760;color:#102217}.app-nav{display:flex;align-items:center;gap:12px;padding:11px 12px;border-radius:8px;color:#b9bbc2;font-size:13px}.app-nav.current{background:#2a2c31;color:white}.app-note{margin-top:auto;padding:12px;border-radius:9px;background:#24262a;color:#b9bbc2;font-size:12px;line-height:1.5}.app-main{min-width:0;flex:1;display:flex;flex-direction:column;background:#0f1012}.app-top{height:56px;flex:none;display:flex;align-items:center;gap:12px;padding:0 18px;border-bottom:1px solid #ffffff12}.app-top strong{font-size:14px}.app-top span{color:#aaa;font-size:12px}.app-top button{margin-left:auto;border:0;border-radius:18px;background:#fff;color:#111;padding:9px 16px;font-weight:700;cursor:pointer}.app-frame-wrap{position:relative;flex:1;min-height:0;padding:12px}.app-frame-wrap iframe{width:100%;height:100%;border:0;border-radius:8px;background:#101114}.app-offline{position:absolute;inset:12px;display:none;align-items:center;justify-content:center;flex-direction:column;gap:12px;text-align:center;background:radial-gradient(ellipse at 50% 20%,#292b31,#121316 70%);border-radius:8px;padding:25px}.app-offline.show{display:flex}.app-offline h2{margin:0;font-size:24px}.app-offline p{max-width:400px;margin:0;color:#b7bac2;line-height:1.5}.app-offline button{border:0;border-radius:20px;background:#fff;color:#111;font-weight:700;padding:11px 17px;cursor:pointer}.app-offline.youtube button{background:#ff0033;color:#fff}.app-offline.spotify button{background:#1ed760;color:#102217}.window.app-mode.spotify .app-view{background:#121212}.window.app-mode.spotify .app-rail{background:#090a0b}.window.app-mode.youtube .app-view{background:#0f1012}
+    @media(max-width:620px){.app-rail{width:58px;padding:14px 6px}.app-identity{justify-content:center;padding:3px 0 16px;font-size:0}.app-logo{flex:none}.app-nav{justify-content:center;padding:12px 0;font-size:0}.app-nav span{font-size:18px}.app-note{display:none}.app-top{padding:0 10px}.app-top span{display:none}}
   </style>
 </head>
 <body>
@@ -25,9 +27,10 @@
       <button class="desk-icon" id="aboutShortcut"><span>🖥️</span>This PC</button>
     </div>
     <section class="window" aria-label="Yu Browser">
-      <div class="titlebar"><div class="brand">🌐 &nbsp;Yu Browser</div><div class="win-controls"><button type="button" id="winMinimize" aria-label="Minimize" title="Minimize">—</button><button type="button" id="winMaximize" aria-label="Maximize" title="Maximize" aria-pressed="false">□</button><button type="button" class="close" id="winClose" aria-label="Close" title="Close">×</button></div></div>
+      <div class="titlebar"><div class="brand" id="windowBrand">🌐 &nbsp;Yu Browser</div><div class="win-controls"><button type="button" id="winMinimize" aria-label="Minimize" title="Minimize">—</button><button type="button" id="winMaximize" aria-label="Maximize" title="Maximize" aria-pressed="false">□</button><button type="button" class="close" id="winClose" aria-label="Close" title="Close">×</button></div></div>
       <div class="tabs"><div class="tab"><span class="dot"></span><span id="tabTitle">New tab</span></div><button class="toolbtn" aria-label="New tab">＋</button></div>
       <form class="toolbar" id="navForm"><button class="toolbtn" type="button" id="back" aria-label="Back">‹</button><button class="toolbtn" type="button" id="forward" aria-label="Forward">›</button><button class="toolbtn" type="button" id="reload" aria-label="Reload">⟳</button><label class="address"><span class="lock">●</span><input id="address" autocomplete="url" spellcheck="false" placeholder="Search or enter a website address" aria-label="Address"></label><button class="go" type="submit">Go</button></form>
+      <div class="app-view" id="appView"><aside class="app-rail"><div class="app-identity"><span class="app-logo" id="appLogo">▶</span><span id="appName">YouTube</span></div><div class="app-nav current"><span>⌂</span><label id="appHomeLabel">Home</label></div><div class="app-nav"><span>⌕</span><label id="appExploreLabel">Explore</label></div><div class="app-nav"><span>▤</span><label id="appLibraryLabel">Library</label></div><div class="app-note" id="appNote">Your entertainment, in its own Yu-OS app window.</div></aside><section class="app-main"><div class="app-top"><strong id="appHeading">YouTube</strong><span>Yu-OS app</span><button id="appOpenExternal" type="button">Open web app ↗</button></div><div class="app-frame-wrap"><iframe id="appFrame" title="YouTube app" hidden></iframe><div class="app-offline" id="appOffline"><h2 id="offlineTitle">Loading app…</h2><p id="offlineMessage">Connecting to the service.</p><button id="offlineOpen" type="button">Open YouTube</button></div></div></section></div>
       <div class="view"><iframe id="browserFrame" title="Browser page" hidden></iframe><div class="welcome" id="welcome"><div class="mark">🌤️</div><h1>Good afternoon</h1><p>Welcome to Yu Browser. Open a built-in app, check your history, or change browser settings.</p><div class="suggestions"><button data-url="https://www.youtube.com">▶️ YouTube</button><button data-url="https://open.spotify.com">🎵 Spotify</button><button data-internal="history">🕘 History</button><button data-internal="settings">⚙️ Settings</button></div></div><div class="internal-page" id="internalPage" hidden></div></div>
       <div class="status" id="status">Ready · Scramjet browser</div>
     </section>
@@ -36,7 +39,7 @@
   </main>
   <script>
     const $ = (id) => document.getElementById(id);
-    let controller, frame, directMode = false;
+    let controller, frame, appFrameController, directMode = false, activeApp = null;
     const address = $("address"), iframe = $("browserFrame"), welcome = $("welcome"), internalPage = $("internalPage");
     let currentInternal = "";
     let darkMode = false;
@@ -49,6 +52,25 @@
     }
     function setPageChrome(title, locationText, statusText) {
       $("tabTitle").textContent = title; address.value = locationText; $("status").textContent = statusText;
+    }
+    function openStandaloneApp(kind) {
+      const spotify = kind === "spotify", title = spotify ? "Spotify" : "YouTube", url = spotify ? "https://open.spotify.com" : "https://www.youtube.com";
+      activeApp = kind;
+      document.querySelector(".window").classList.add("app-mode", kind);
+      $("windowBrand").textContent = `${spotify ? "♫" : "▶"}  ${title}`;
+      $("appLogo").textContent = spotify ? "♫" : "▶"; $("appName").textContent = title; $("appHeading").textContent = title;
+      $("appExploreLabel").textContent = spotify ? "Search" : "Shorts"; $("appLibraryLabel").textContent = spotify ? "Your Library" : "Subscriptions";
+      $("appNote").textContent = spotify ? "Your music and podcasts, in a dedicated Yu-OS app window." : "Videos and channels, in a dedicated Yu-OS app window.";
+      $("appFrame").title = `${title} app`; $("appFrame").hidden = true;
+      $("appOffline").className = `app-offline ${kind}`;
+      $("offlineTitle").textContent = directMode ? `${title} needs its web app` : `Opening ${title}…`;
+      $("offlineMessage").textContent = directMode ? "This browser mode cannot embed the service. Open it in a new tab to sign in and play." : "Loading the service inside its own app window.";
+      $("offlineOpen").textContent = `Open ${title}`; $("appOffline").classList.toggle("show", directMode);
+      saveVisit(url, title);
+      if (!directMode) try {
+        if (!appFrameController) appFrameController = controller.createFrame($("appFrame"));
+        appFrameController.go(url); $("appFrame").hidden = false; $("appOffline").classList.remove("show");
+      } catch { $("offlineTitle").textContent = `${title} could not load`; $("offlineMessage").textContent = "Try opening the service in its own tab."; $("appOffline").classList.add("show"); }
     }
     function openInternal(page, record = true) {
       currentInternal = page;
@@ -80,15 +102,16 @@
     }
     function navigateTo(value) {
       const input = value.trim();
+      if (/^(https?:\/\/)?(www\.)?youtube\.com(?:[/:?#]|$)/i.test(input)) { openStandaloneApp("youtube"); return; }
+      if (/^(https?:\/\/)?open\.spotify\.com(?:[/:?#]|$)/i.test(input)) { openStandaloneApp("spotify"); return; }
       if (/^yu:\/\/(settings|history)$/i.test(input)) { openInternal(input.slice(5).toLowerCase()); return; }
       if (/^yu:\/\/home$/i.test(input)) { currentInternal = ""; internalPage.hidden = true; iframe.hidden = true; welcome.classList.remove("hidden"); setPageChrome("New tab", "", "Ready · Connected to Scramjet"); return; }
       const url = parseAddress(input); if (!url) return;
       try {
         const parsed = new URL(url);
         if (frame) frame.go(parsed.href);
-        else if (directMode && ["www.youtube.com", "open.spotify.com"].includes(parsed.hostname)) {
-          window.open(parsed.href, "_blank", "noopener,noreferrer"); saveVisit(parsed.href, parsed.hostname); notify(`Opened ${parsed.hostname} in a new tab`); return;
-        } else iframe.src = parsed.href;
+        else iframe.src = parsed.href;
+        document.querySelector(".window").classList.remove("app-mode", "youtube", "spotify"); activeApp = null; $("windowBrand").textContent = "🌐  Yu Browser";
         currentInternal = ""; internalPage.hidden = true; iframe.hidden = false; welcome.classList.add("hidden");
         setPageChrome(parsed.hostname, parsed.href, directMode ? `Direct browsing · ${parsed.hostname}` : `Browsing · ${parsed.hostname}`); saveVisit(parsed.href, parsed.hostname);
       } catch { notify("Enter a valid website address"); }
@@ -115,7 +138,8 @@
         const scheme = location.protocol === "https:" ? "wss:" : "ws:";
         controller = new window.$scramjetController.Controller({ serviceworker: worker, transport: new LibcurlClient({ wisp: `${scheme}//${location.host}/wisp/` }), config: { scramjetPath: "/scram/scramjet.js", wasmPath: "/scram/scramjet.wasm", injectPath: "/controller/controller.inject.js" } });
         await controller.wait();
-        frame = controller.createFrame(iframe);
+        frame = controller.createFrame(iframe); appFrameController = controller.createFrame($("appFrame"));
+        if (activeApp) openStandaloneApp(activeApp);
         setInterval(() => navigator.serviceWorker.controller?.postMessage("keepalive"), 15000);
         $("status").textContent = "Ready · Connected to Scramjet";
       } catch (error) {
@@ -135,12 +159,15 @@
       else if (internalButton) internalButton.dataset.internal === "home" ? navigateTo("yu://home") : openInternal(internalButton.dataset.internal);
       else if (visitButton) navigateTo(visitButton.dataset.visit);
     });
+    $("appOpenExternal").addEventListener("click", () => { if (activeApp) window.open(activeApp === "spotify" ? "https://open.spotify.com" : "https://www.youtube.com", "_blank", "noopener,noreferrer"); });
+    $("offlineOpen").addEventListener("click", () => { if (activeApp) window.open(activeApp === "spotify" ? "https://open.spotify.com" : "https://www.youtube.com", "_blank", "noopener,noreferrer"); });
     $("back").addEventListener("click", () => { if (currentInternal) navigateTo("yu://home"); else if (frame) frame.back(); else iframe.contentWindow?.history.back(); });
     $("forward").addEventListener("click", () => { if (frame) frame.forward(); else iframe.contentWindow?.history.forward(); });
     $("reload").addEventListener("click", () => { if (currentInternal) openInternal(currentInternal, false); else if (frame) frame.reload(); else iframe.contentWindow?.location.reload(); });
     const browserWindow = document.querySelector(".window");
     function showBrowser(focusAddress = false) {
       browserWindow.classList.remove("minimized");
+      browserWindow.classList.remove("app-mode", "youtube", "spotify"); activeApp = null; $("windowBrand").textContent = "🌐  Yu Browser";
       if (focusAddress) address.focus();
     }
     $("winMinimize").addEventListener("click", () => browserWindow.classList.add("minimized"));

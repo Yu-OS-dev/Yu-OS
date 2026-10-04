@@ -4,7 +4,7 @@ A small Windows 11 inspired desktop shell with a Yu Browser powered by Scramjet.
 
 ## Run without npm
 
-Open `index.html` directly in a browser. The desktop, Settings, dark mode, and History work without a server. YouTube and Spotify open in new tabs; other sites load directly when they allow embedding.
+Open `index.html` directly in a browser. The desktop, Settings, dark mode, and History work without a server. YouTube and Spotify have dedicated app-style windows; without the Scramjet server, use the app window's **Open web app** button to launch the service in a new tab. Other sites load directly when they allow embedding.
 
 ## Run with the Scramjet proxy
 
@@ -15,7 +15,7 @@ npm install
 npm start
 ```
 
-Open [http://localhost:8080](http://localhost:8080). The proxy needs localhost or HTTPS because Scramjet uses a service worker, plus the Wisp endpoint served by this app.
+Open [http://localhost:8060](http://localhost:8060). The proxy needs localhost or HTTPS because Scramjet uses a service worker, plus the Wisp endpoint served by this app.
 
 ## Keep the Scramjet site online
 
