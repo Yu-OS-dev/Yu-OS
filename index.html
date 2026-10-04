@@ -11,6 +11,10 @@
   <style>
     .desktop.dark{background:radial-gradient(ellipse at 70% 45%,#26374f 0 15%,transparent 43%),linear-gradient(135deg,#101927,#1e2b3e 58%,#26364a);color:#edf3fb}.desktop.dark:before{background:linear-gradient(145deg,#8297ad55,#344e6c77)}.desktop.dark:after{background:linear-gradient(30deg,#101b2dcc,#657b9566)}.desktop.dark .desk-icon{color:#f2f6fc;text-shadow:0 1px 3px #101927}.desktop.dark .window{background:#1e2938f2;border-color:#526074;color:#edf3fb}.desktop.dark .titlebar,.desktop.dark .tabs{background:#202c3b}.desktop.dark .brand,.desktop.dark .win-controls button,.desktop.dark .toolbtn{color:#d9e3ef}.desktop.dark .tab{background:#2c394a;color:#edf3fb;box-shadow:0 -1px 0 #526074}.desktop.dark .toolbar,.desktop.dark .status{background:#263345;color:#c2cede;border-color:#3d4a5c}.desktop.dark .address{background:#1b2634;border-color:#435267}.desktop.dark .address input{color:#edf3fb}.desktop.dark .view{background:#182331;border-color:#455366}.desktop.dark .taskbar{background:#172231e8;border-color:#49586b}.desktop.dark .taskapp{color:#eff5fb}.desktop.dark .tray{color:#eff5fb}.desktop.dark .welcome,.desktop.dark .internal-page{background:radial-gradient(ellipse at 50% 30%,#2b3c51,#1a2533 70%);color:#edf3fb}.desktop.dark .welcome p,.desktop.dark .internal-page p,.desktop.dark .history-time{color:#b5c1d0}.desktop.dark .suggestions button,.desktop.dark .setting-card,.desktop.dark .history-row{background:#253346;border-color:#435267;color:#edf3fb}.desktop.dark .switch{accent-color:#3988e8}.internal-page{position:absolute;inset:0;overflow:auto;padding:clamp(24px,6vw,64px);background:radial-gradient(ellipse at 50% 30%,#edf6ff,white 70%);color:#1c2a3e}.internal-page .page-wrap{width:min(700px,100%);margin:0 auto}.internal-page .eyebrow{color:#4383ce;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}.internal-page h1{margin:8px 0 6px;font-size:30px;font-weight:600}.internal-page p{color:#65748a}.setting-card,.history-row{margin-top:18px;padding:18px 20px;border:1px solid #e0e7ef;border-radius:12px;background:#fff}.setting-row{display:flex;align-items:center;justify-content:space-between;gap:18px}.setting-row strong,.history-title{display:block;font-size:15px}.setting-row small{display:block;margin-top:5px;color:#738197}.setting-row input{width:20px;height:20px;cursor:pointer}.history-list{display:grid;gap:9px;margin-top:22px}.history-row{display:flex;align-items:center;gap:13px;margin:0;padding:12px 15px}.history-row button{flex:1;min-width:0;text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;border:0;background:transparent;color:#1768d2;cursor:pointer}.history-time{font-size:12px;color:#778397;white-space:nowrap}.page-actions{display:flex;gap:10px;margin-top:20px}.page-actions button,.clear-history{padding:9px 13px;border:1px solid #dce4ed;border-radius:8px;background:#fff;color:#34465f;cursor:pointer}.internal-page .empty{padding:24px;text-align:center;color:#778397;border:1px dashed #ccd5e0;border-radius:10px}
   </style>
+  <style>
+    .window.minimized{display:none}
+    .window.maximized{left:0;top:0;transform:none;width:100%;height:calc(100% - 58px);min-height:0;border-radius:0}
+  </style>
 </head>
 <body>
   <main class="desktop">
@@ -21,7 +25,7 @@
       <button class="desk-icon" id="aboutShortcut"><span>🖥️</span>This PC</button>
     </div>
     <section class="window" aria-label="Yu Browser">
-      <div class="titlebar"><div class="brand">🌐 &nbsp;Yu Browser</div><div class="win-controls"><button aria-label="Minimize">—</button><button aria-label="Maximize">□</button><button class="close" aria-label="Close">×</button></div></div>
+      <div class="titlebar"><div class="brand">🌐 &nbsp;Yu Browser</div><div class="win-controls"><button type="button" id="winMinimize" aria-label="Minimize" title="Minimize">—</button><button type="button" id="winMaximize" aria-label="Maximize" title="Maximize" aria-pressed="false">□</button><button type="button" class="close" id="winClose" aria-label="Close" title="Close">×</button></div></div>
       <div class="tabs"><div class="tab"><span class="dot"></span><span id="tabTitle">New tab</span></div><button class="toolbtn" aria-label="New tab">＋</button></div>
       <form class="toolbar" id="navForm"><button class="toolbtn" type="button" id="back" aria-label="Back">‹</button><button class="toolbtn" type="button" id="forward" aria-label="Forward">›</button><button class="toolbtn" type="button" id="reload" aria-label="Reload">⟳</button><label class="address"><span class="lock">●</span><input id="address" autocomplete="url" spellcheck="false" placeholder="Search or enter a website address" aria-label="Address"></label><button class="go" type="submit">Go</button></form>
       <div class="view"><iframe id="browserFrame" title="Browser page" hidden></iframe><div class="welcome" id="welcome"><div class="mark">🌤️</div><h1>Good afternoon</h1><p>Welcome to Yu Browser. Open a built-in app, check your history, or change browser settings.</p><div class="suggestions"><button data-url="https://www.youtube.com">▶️ YouTube</button><button data-url="https://open.spotify.com">🎵 Spotify</button><button data-internal="history">🕘 History</button><button data-internal="settings">⚙️ Settings</button></div></div><div class="internal-page" id="internalPage" hidden></div></div>
@@ -134,9 +138,22 @@
     $("back").addEventListener("click", () => { if (currentInternal) navigateTo("yu://home"); else if (frame) frame.back(); else iframe.contentWindow?.history.back(); });
     $("forward").addEventListener("click", () => { if (frame) frame.forward(); else iframe.contentWindow?.history.forward(); });
     $("reload").addEventListener("click", () => { if (currentInternal) openInternal(currentInternal, false); else if (frame) frame.reload(); else iframe.contentWindow?.location.reload(); });
-    $("browserShortcut").addEventListener("click", () => address.focus()); $("taskBrowser").addEventListener("click", () => address.focus());
+    const browserWindow = document.querySelector(".window");
+    function showBrowser(focusAddress = false) {
+      browserWindow.classList.remove("minimized");
+      if (focusAddress) address.focus();
+    }
+    $("winMinimize").addEventListener("click", () => browserWindow.classList.add("minimized"));
+    $("winMaximize").addEventListener("click", (event) => {
+      const maximized = browserWindow.classList.toggle("maximized");
+      event.currentTarget.setAttribute("aria-pressed", String(maximized));
+      event.currentTarget.setAttribute("aria-label", maximized ? "Restore" : "Maximize");
+      event.currentTarget.title = maximized ? "Restore" : "Maximize";
+      event.currentTarget.textContent = maximized ? "❐" : "□";
+    });
+    $("winClose").addEventListener("click", () => browserWindow.classList.add("minimized"));
+    $("browserShortcut").addEventListener("click", () => showBrowser(true)); $("taskBrowser").addEventListener("click", () => showBrowser(true));
     $("aboutShortcut").addEventListener("click", () => notify("Yu-OS · A little desktop for the web"));
-    document.querySelector(".close").addEventListener("click", () => notify("Browser minimized to the taskbar"));
     function tick() { const now = new Date(); $("clock").textContent = now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }); $("date").textContent = now.toLocaleDateString([], { month: "numeric", day: "numeric", year: "numeric" }); }
     tick(); setInterval(tick, 1000); boot();
   </script>
