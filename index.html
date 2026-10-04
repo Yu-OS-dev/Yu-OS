@@ -14,6 +14,8 @@
   <style>
     .window.minimized{display:none}
     .window.maximized{left:0;top:0;transform:none;width:100%;height:calc(100% - 58px);min-height:0;border-radius:0}
+    .battery{display:flex;align-items:center;gap:4px;min-width:47px;color:inherit;font-size:11px;font-variant-numeric:tabular-nums}.battery svg{width:23px;height:14px;overflow:visible}.battery .battery-outline{fill:none;stroke:currentColor;stroke-width:1.6}.battery .battery-level{fill:#438d5a;transition:width .25s}.battery.low .battery-level{fill:#d94848}.battery.charging .battery-bolt{display:block}.battery-bolt{display:none;fill:#fff}.desktop.dark .battery .battery-level{fill:#65c681}.desktop.dark .battery.low .battery-level{fill:#ff6969}
+    .start-menu{position:absolute;z-index:10;left:50%;bottom:68px;transform:translateX(-50%);width:min(520px,calc(100vw - 24px));max-height:min(620px,calc(100vh - 96px));overflow:auto;padding:20px;border:1px solid #ffffffcf;border-radius:14px;background:#f6f8fbea;box-shadow:0 20px 60px #15253b45;backdrop-filter:blur(24px)}.start-menu[hidden]{display:none}.start-menu h2{margin:0 0 14px;font-size:18px}.start-search{width:100%;height:40px;padding:0 13px;border:1px solid #d7e0ea;border-radius:8px;background:#fff;color:#26374e;outline:none}.start-search:focus{border-color:#438ce0;box-shadow:0 0 0 2px #438ce033}.start-label{margin:19px 0 9px;color:#66758a;font-size:12px;font-weight:700}.start-apps{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.start-app{display:flex;align-items:center;gap:10px;min-height:52px;padding:8px;border:1px solid transparent;border-radius:8px;background:transparent;color:#25344b;text-align:left;cursor:pointer}.start-app:hover,.start-app:focus{background:#e8f1fb;border-color:#d5e5f6}.start-app .start-icon{width:30px;text-align:center;font-size:21px}.start-empty{padding:15px;color:#738197;font-size:13px}.window.terminal-mode{background:#101216;color:#e8edf2;border-color:#ffffff24}.window.terminal-mode .titlebar{background:#191c22}.window.terminal-mode .brand,.window.terminal-mode .win-controls button{color:#e8edf2}.window.terminal-mode .tabs,.window.terminal-mode .toolbar,.window.terminal-mode .status,.window.terminal-mode .view,.window.terminal-mode .app-view{display:none}.terminal-view{display:none;flex:1;min-height:0;margin:0 9px 9px;border:1px solid #ffffff13;border-radius:8px;background:#0c0f12;overflow:hidden;flex-direction:column;font:13px/1.55 ui-monospace,SFMono-Regular,Consolas,monospace}.window.terminal-mode .terminal-view{display:flex}.terminal-head{padding:11px 15px;border-bottom:1px solid #ffffff12;color:#aab6c4;background:#14171c}.terminal-output{flex:1;overflow:auto;padding:15px;color:#d6e0eb;white-space:pre-wrap;overflow-wrap:anywhere}.terminal-line{margin:0 0 5px}.terminal-line.command{color:#77c5a1}.terminal-line.error{color:#ff8888}.terminal-form{display:flex;gap:9px;align-items:center;padding:11px 15px;border-top:1px solid #ffffff12;color:#6ed39e}.terminal-form input{flex:1;min-width:0;border:0;outline:0;background:transparent;color:#edf3f8;font:inherit}.desktop.dark .start-menu{background:#1d2939f5;border-color:#4a5a6e;color:#edf3fb}.desktop.dark .start-search{background:#253346;border-color:#435267;color:#edf3fb}.desktop.dark .start-label{color:#b5c1d0}.desktop.dark .start-app{color:#edf3fb}.desktop.dark .start-app:hover,.desktop.dark .start-app:focus{background:#2b3b51;border-color:#435267}
     .window.app-mode{background:#101114;color:#f5f5f5;border-color:#ffffff24}.window.app-mode .titlebar{background:#17181b;color:#f5f5f5}.window.app-mode .brand,.window.app-mode .win-controls button{color:#eee}.window.app-mode .win-controls button:hover{background:#ffffff1c}.window.app-mode .tabs,.window.app-mode .toolbar,.window.app-mode .status{display:none}.app-view{display:none;flex:1;min-height:0;margin:0 9px 9px;border-radius:8px;overflow:hidden;background:#111;position:relative}.window.app-mode .app-view{display:flex}.window.app-mode .view{display:none}.app-rail{width:204px;flex:none;padding:20px 12px;background:#18191d;display:flex;flex-direction:column;gap:8px}.app-identity{display:flex;align-items:center;gap:10px;padding:2px 9px 20px;font-weight:700;font-size:17px}.app-logo{width:34px;height:34px;display:grid;place-items:center;border-radius:10px;background:#ff0033;color:white;font-size:17px}.app-mode.spotify .app-logo{background:#1ed760;color:#102217}.app-nav{display:flex;align-items:center;gap:12px;padding:11px 12px;border-radius:8px;color:#b9bbc2;font-size:13px}.app-nav.current{background:#2a2c31;color:white}.app-note{margin-top:auto;padding:12px;border-radius:9px;background:#24262a;color:#b9bbc2;font-size:12px;line-height:1.5}.app-main{min-width:0;flex:1;display:flex;flex-direction:column;background:#0f1012}.app-top{height:56px;flex:none;display:flex;align-items:center;gap:12px;padding:0 18px;border-bottom:1px solid #ffffff12}.app-top strong{font-size:14px}.app-top span{color:#aaa;font-size:12px}.app-top button{margin-left:auto;border:0;border-radius:18px;background:#fff;color:#111;padding:9px 16px;font-weight:700;cursor:pointer}.app-frame-wrap{position:relative;flex:1;min-height:0;padding:12px}.app-frame-wrap iframe{width:100%;height:100%;border:0;border-radius:8px;background:#101114}.app-offline{position:absolute;inset:12px;display:none;align-items:center;justify-content:center;flex-direction:column;gap:12px;text-align:center;background:radial-gradient(ellipse at 50% 20%,#292b31,#121316 70%);border-radius:8px;padding:25px}.app-offline.show{display:flex}.app-offline h2{margin:0;font-size:24px}.app-offline p{max-width:400px;margin:0;color:#b7bac2;line-height:1.5}.app-offline button{border:0;border-radius:20px;background:#fff;color:#111;font-weight:700;padding:11px 17px;cursor:pointer}.app-offline.youtube button{background:#ff0033;color:#fff}.app-offline.spotify button{background:#1ed760;color:#102217}.window.app-mode.spotify .app-view{background:#121212}.window.app-mode.spotify .app-rail{background:#090a0b}.window.app-mode.youtube .app-view{background:#0f1012}
     @media(max-width:620px){.app-rail{width:58px;padding:14px 6px}.app-identity{justify-content:center;padding:3px 0 16px;font-size:0}.app-logo{flex:none}.app-nav{justify-content:center;padding:12px 0;font-size:0}.app-nav span{font-size:18px}.app-note{display:none}.app-top{padding:0 10px}.app-top span{display:none}}
   </style>
@@ -31,10 +33,12 @@
       <div class="tabs"><div class="tab"><span class="dot"></span><span id="tabTitle">New tab</span></div><button class="toolbtn" aria-label="New tab">＋</button></div>
       <form class="toolbar" id="navForm"><button class="toolbtn" type="button" id="back" aria-label="Back">‹</button><button class="toolbtn" type="button" id="forward" aria-label="Forward">›</button><button class="toolbtn" type="button" id="reload" aria-label="Reload">⟳</button><label class="address"><span class="lock">●</span><input id="address" autocomplete="url" spellcheck="false" placeholder="Search or enter a website address" aria-label="Address"></label><button class="go" type="submit">Go</button></form>
       <div class="app-view" id="appView"><aside class="app-rail"><div class="app-identity"><span class="app-logo" id="appLogo">▶</span><span id="appName">YouTube</span></div><div class="app-nav current"><span>⌂</span><label id="appHomeLabel">Home</label></div><div class="app-nav"><span>⌕</span><label id="appExploreLabel">Explore</label></div><div class="app-nav"><span>▤</span><label id="appLibraryLabel">Library</label></div><div class="app-note" id="appNote">Your entertainment, in its own Yu-OS app window.</div></aside><section class="app-main"><div class="app-top"><strong id="appHeading">YouTube</strong><span>Yu-OS app</span><button id="appOpenExternal" type="button">Open web app ↗</button></div><div class="app-frame-wrap"><iframe id="appFrame" title="YouTube app" hidden></iframe><div class="app-offline" id="appOffline"><h2 id="offlineTitle">Loading app…</h2><p id="offlineMessage">Connecting to the service.</p><button id="offlineOpen" type="button">Open YouTube</button></div></div></section></div>
+      <section class="terminal-view" id="terminalView" aria-label="Yu-OS Terminal"><div class="terminal-head">Yu-OS Terminal · browser sandbox</div><div class="terminal-output" id="terminalOutput" role="log" aria-live="polite"></div><form class="terminal-form" id="terminalForm"><label for="terminalInput">yu@desktop:~$</label><input id="terminalInput" autocomplete="off" spellcheck="false" aria-label="Terminal command"></form></section>
       <div class="view"><iframe id="browserFrame" title="Browser page" hidden></iframe><div class="welcome" id="welcome"><div class="mark">🌤️</div><h1>Good afternoon</h1><p>Welcome to Yu Browser. Open a built-in app, check your history, or change browser settings.</p><div class="suggestions"><button data-url="https://www.youtube.com">▶️ YouTube</button><button data-url="https://open.spotify.com">🎵 Spotify</button><button data-internal="history">🕘 History</button><button data-internal="settings">⚙️ Settings</button></div></div><div class="internal-page" id="internalPage" hidden></div></div>
       <div class="status" id="status">Ready · Scramjet browser</div>
     </section>
-    <div class="taskbar"><button class="taskapp start" aria-label="Start">⊞</button><button class="taskapp" title="Search">🔎</button><button class="taskapp active" id="taskBrowser" title="Yu Browser">🌐</button><button class="taskapp" title="YouTube" data-url="https://www.youtube.com">▶️</button><button class="taskapp" title="Spotify" data-url="https://open.spotify.com">🎵</button><button class="taskapp" title="Files">📁</button><button class="taskapp" title="Settings" data-internal="settings">⚙️</button><div class="tray"><span>⌃</span><span>◖</span><span>◧</span><div class="time"><div id="clock">--:--</div><div id="date">---</div></div></div></div>
+    <div class="start-menu" id="startMenu" hidden><h2>Start</h2><input class="start-search" id="startSearch" type="search" placeholder="Search apps" aria-label="Search apps"><div class="start-label">Pinned</div><div class="start-apps" id="startApps"><button class="start-app" data-launch="browser" data-name="Yu Browser"><span class="start-icon">🌐</span>Yu Browser</button><button class="start-app" data-launch="youtube" data-name="YouTube"><span class="start-icon">▶️</span>YouTube</button><button class="start-app" data-launch="spotify" data-name="Spotify"><span class="start-icon">🎵</span>Spotify</button><button class="start-app" data-launch="terminal" data-name="Terminal"><span class="start-icon">⌨️</span>Terminal</button><button class="start-app" data-launch="settings" data-name="Settings"><span class="start-icon">⚙️</span>Settings</button><button class="start-app" data-launch="history" data-name="History"><span class="start-icon">🕘</span>History</button></div><div class="start-empty" id="startEmpty" hidden>No apps found.</div></div>
+    <div class="taskbar"><button class="taskapp start" id="startButton" aria-label="Start" aria-expanded="false">⊞</button><button class="taskapp" title="Search" id="taskSearch">🔎</button><button class="taskapp active" id="taskBrowser" title="Yu Browser">🌐</button><button class="taskapp" title="YouTube" data-url="https://www.youtube.com">▶️</button><button class="taskapp" title="Spotify" data-url="https://open.spotify.com">🎵</button><button class="taskapp" title="Terminal" id="taskTerminal">⌨️</button><button class="taskapp" title="Files">📁</button><button class="taskapp" title="Settings" data-internal="settings">⚙️</button><div class="tray"><span>⌃</span><span>◖</span><span>◧</span><div class="battery" id="batteryStatus" role="img" aria-label="Battery status unavailable" title="Battery status unavailable"><svg viewBox="0 0 26 16" aria-hidden="true"><rect class="battery-outline" x="1" y="2" width="21" height="12" rx="2"/><rect x="3" y="4" width="17" height="8" rx="1" fill="none"/><rect class="battery-level" id="batteryLevel" x="3" y="4" width="0" height="8" rx="1"/><path d="M24 5v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path class="battery-bolt" d="m12 4-4 5h3l-1 3 5-6h-3l1-2z"/></svg><span id="batteryPercent">--%</span></div><div class="time"><div id="clock">--:--</div><div id="date">---</div></div></div></div>
     <div class="toast" id="toast">Yu-OS is ready</div>
   </main>
   <script>
@@ -56,8 +60,8 @@
     function openStandaloneApp(kind) {
       const spotify = kind === "spotify", title = spotify ? "Spotify" : "YouTube", url = spotify ? "https://open.spotify.com" : "https://www.youtube.com";
       activeApp = kind;
-      document.querySelector(".window").classList.add("app-mode", kind);
-      $("windowBrand").textContent = `${spotify ? "♫" : "▶"}  ${title}`;
+      document.querySelector(".window").classList.remove("terminal-mode"); document.querySelector(".window").classList.add("app-mode", kind);
+      $("windowBrand").textContent = `${spotify ? "♫" : "▶"}  ${title}`; document.querySelector(".window").setAttribute("aria-label", `${title} app`);
       $("appLogo").textContent = spotify ? "♫" : "▶"; $("appName").textContent = title; $("appHeading").textContent = title;
       $("appExploreLabel").textContent = spotify ? "Search" : "Shorts"; $("appLibraryLabel").textContent = spotify ? "Your Library" : "Subscriptions";
       $("appNote").textContent = spotify ? "Your music and podcasts, in a dedicated Yu-OS app window." : "Videos and channels, in a dedicated Yu-OS app window.";
@@ -72,7 +76,71 @@
         appFrameController.go(url); $("appFrame").hidden = false; $("appOffline").classList.remove("show");
       } catch { $("offlineTitle").textContent = `${title} could not load`; $("offlineMessage").textContent = "Try opening the service in its own tab."; $("appOffline").classList.add("show"); }
     }
+    function openTerminal() {
+      activeApp = null;
+      const win = document.querySelector(".window"); win.classList.remove("app-mode", "youtube", "spotify"); win.classList.add("terminal-mode");
+      $("windowBrand").textContent = "⌨️  Yu-OS Terminal"; win.setAttribute("aria-label", "Yu-OS Terminal"); win.classList.remove("minimized");
+      const output = $("terminalOutput");
+      if (!output.dataset.ready) {
+        output.dataset.ready = "true";
+        appendTerminal("Yu-OS Terminal — browser sandbox", "command");
+        appendTerminal("Type help to see available commands. This terminal only controls Yu-OS.");
+      }
+      $("terminalInput").focus();
+    }
+    function appendTerminal(text, style = "") {
+      const line = document.createElement("div"); line.className = `terminal-line ${style}`; line.textContent = text;
+      const output = $("terminalOutput"); output.append(line); output.scrollTop = output.scrollHeight;
+    }
+    function runTerminalCommand(value) {
+      const command = value.trim(); if (!command) return;
+      appendTerminal(`yu@desktop:~$ ${command}`, "command");
+      const [name, ...args] = command.split(/\s+/), rest = command.slice(name.length).trim();
+      switch (name.toLowerCase()) {
+        case "help": appendTerminal("help  clear  date  whoami  pwd  ls  echo <text>  history  open <browser|youtube|spotify|settings|history>  exit"); break;
+        case "clear": $("terminalOutput").replaceChildren(); break;
+        case "date": appendTerminal(new Date().toString()); break;
+        case "whoami": appendTerminal("yu"); break;
+        case "pwd": appendTerminal("/home/yu"); break;
+        case "ls": case "dir": appendTerminal("Desktop  Yu Browser  YouTube  Spotify  Settings  History"); break;
+        case "echo": appendTerminal(rest); break;
+        case "history": {
+          const visits = readVisits().slice(0, 8);
+          appendTerminal(visits.length ? visits.map((visit, i) => `${i + 1}. ${visit.title || visit.url}`).join("\n") : "No recent pages."); break;
+        }
+        case "open": {
+          const target = (args[0] || "").toLowerCase();
+          if (target === "browser") showBrowser(true);
+          else if (target === "youtube" || target === "spotify") openStandaloneApp(target);
+          else if (target === "settings" || target === "history") { showBrowser(); openInternal(target); }
+          else { appendTerminal("Usage: open browser|youtube|spotify|settings|history", "error"); break; }
+          break;
+        }
+        case "exit": showBrowser(); break;
+        default: appendTerminal(`Command not found: ${name}. Type help for commands.`, "error");
+      }
+    }
+    function toggleStartMenu(force) {
+      const menu = $("startMenu"), open = force ?? menu.hidden;
+      menu.hidden = !open; $("startButton").setAttribute("aria-expanded", String(open));
+      if (open) { $("startSearch").value = ""; filterStartApps(""); $("startSearch").focus(); }
+    }
+    function filterStartApps(query) {
+      const needle = query.trim().toLowerCase(); let shown = 0;
+      document.querySelectorAll(".start-app").forEach((button) => {
+        const match = button.dataset.name.toLowerCase().includes(needle); button.hidden = !match; if (match) shown++;
+      });
+      $("startEmpty").hidden = shown > 0;
+    }
+    function launchFromStart(target) {
+      toggleStartMenu(false);
+      if (target === "browser") showBrowser(true);
+      else if (target === "youtube" || target === "spotify") openStandaloneApp(target);
+      else if (target === "terminal") openTerminal();
+      else { showBrowser(); openInternal(target); }
+    }
     function openInternal(page, record = true) {
+      document.querySelector(".window").classList.remove("terminal-mode", "app-mode", "youtube", "spotify"); activeApp = null; $("windowBrand").textContent = "🌐  Yu Browser"; document.querySelector(".window").setAttribute("aria-label", "Yu Browser");
       currentInternal = page;
       const route = `yu://${page}`;
       if (record) saveVisit(route, page === "settings" ? "Settings" : "History");
@@ -105,13 +173,13 @@
       if (/^(https?:\/\/)?(www\.)?youtube\.com(?:[/:?#]|$)/i.test(input)) { openStandaloneApp("youtube"); return; }
       if (/^(https?:\/\/)?open\.spotify\.com(?:[/:?#]|$)/i.test(input)) { openStandaloneApp("spotify"); return; }
       if (/^yu:\/\/(settings|history)$/i.test(input)) { openInternal(input.slice(5).toLowerCase()); return; }
-      if (/^yu:\/\/home$/i.test(input)) { currentInternal = ""; internalPage.hidden = true; iframe.hidden = true; welcome.classList.remove("hidden"); setPageChrome("New tab", "", "Ready · Connected to Scramjet"); return; }
+      if (/^yu:\/\/home$/i.test(input)) { document.querySelector(".window").classList.remove("terminal-mode", "app-mode", "youtube", "spotify"); $("windowBrand").textContent = "🌐  Yu Browser"; currentInternal = ""; internalPage.hidden = true; iframe.hidden = true; welcome.classList.remove("hidden"); setPageChrome("New tab", "", "Ready · Connected to Scramjet"); return; }
       const url = parseAddress(input); if (!url) return;
       try {
         const parsed = new URL(url);
         if (frame) frame.go(parsed.href);
         else iframe.src = parsed.href;
-        document.querySelector(".window").classList.remove("app-mode", "youtube", "spotify"); activeApp = null; $("windowBrand").textContent = "🌐  Yu Browser";
+        document.querySelector(".window").classList.remove("app-mode", "youtube", "spotify", "terminal-mode"); activeApp = null; $("windowBrand").textContent = "🌐  Yu Browser";
         currentInternal = ""; internalPage.hidden = true; iframe.hidden = false; welcome.classList.add("hidden");
         setPageChrome(parsed.hostname, parsed.href, directMode ? `Direct browsing · ${parsed.hostname}` : `Browsing · ${parsed.hostname}`); saveVisit(parsed.href, parsed.hostname);
       } catch { notify("Enter a valid website address"); }
@@ -159,6 +227,14 @@
       else if (internalButton) internalButton.dataset.internal === "home" ? navigateTo("yu://home") : openInternal(internalButton.dataset.internal);
       else if (visitButton) navigateTo(visitButton.dataset.visit);
     });
+    $("startButton").addEventListener("click", () => toggleStartMenu());
+    $("taskSearch").addEventListener("click", () => toggleStartMenu(true));
+    $("taskTerminal").addEventListener("click", openTerminal);
+    $("startSearch").addEventListener("input", (event) => filterStartApps(event.target.value));
+    $("startApps").addEventListener("click", (event) => { const app = event.target.closest("[data-launch]"); if (app) launchFromStart(app.dataset.launch); });
+    $("terminalForm").addEventListener("submit", (event) => { event.preventDefault(); const input = $("terminalInput"); runTerminalCommand(input.value); input.value = ""; const win = document.querySelector(".window"); if (!win.classList.contains("minimized") && win.classList.contains("terminal-mode")) input.focus(); });
+    document.addEventListener("click", (event) => { if (!event.target.closest("#startMenu, #startButton, #taskSearch")) toggleStartMenu(false); });
+    document.addEventListener("keydown", (event) => { if (event.key === "Escape" && !$("startMenu").hidden) toggleStartMenu(false); });
     $("appOpenExternal").addEventListener("click", () => { if (activeApp) window.open(activeApp === "spotify" ? "https://open.spotify.com" : "https://www.youtube.com", "_blank", "noopener,noreferrer"); });
     $("offlineOpen").addEventListener("click", () => { if (activeApp) window.open(activeApp === "spotify" ? "https://open.spotify.com" : "https://www.youtube.com", "_blank", "noopener,noreferrer"); });
     $("back").addEventListener("click", () => { if (currentInternal) navigateTo("yu://home"); else if (frame) frame.back(); else iframe.contentWindow?.history.back(); });
@@ -167,7 +243,7 @@
     const browserWindow = document.querySelector(".window");
     function showBrowser(focusAddress = false) {
       browserWindow.classList.remove("minimized");
-      browserWindow.classList.remove("app-mode", "youtube", "spotify"); activeApp = null; $("windowBrand").textContent = "🌐  Yu Browser";
+      browserWindow.classList.remove("app-mode", "youtube", "spotify", "terminal-mode"); activeApp = null; $("windowBrand").textContent = "🌐  Yu Browser"; browserWindow.setAttribute("aria-label", "Yu Browser");
       if (focusAddress) address.focus();
     }
     $("winMinimize").addEventListener("click", () => browserWindow.classList.add("minimized"));
@@ -182,7 +258,23 @@
     $("browserShortcut").addEventListener("click", () => showBrowser(true)); $("taskBrowser").addEventListener("click", () => showBrowser(true));
     $("aboutShortcut").addEventListener("click", () => notify("Yu-OS · A little desktop for the web"));
     function tick() { const now = new Date(); $("clock").textContent = now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }); $("date").textContent = now.toLocaleDateString([], { month: "numeric", day: "numeric", year: "numeric" }); }
-    tick(); setInterval(tick, 1000); boot();
+    async function initBatteryStatus() {
+      const indicator = $("batteryStatus");
+      if (!navigator.getBattery) return;
+      try {
+        const battery = await navigator.getBattery();
+        const update = () => {
+          const percent = Math.round(battery.level * 100), charging = battery.charging;
+          $("batteryPercent").textContent = `${percent}%`;
+          $("batteryLevel").setAttribute("width", String(17 * battery.level));
+          indicator.classList.toggle("charging", charging); indicator.classList.toggle("low", percent <= 20 && !charging);
+          const status = `Battery ${percent}%${charging ? " · charging" : ""}`;
+          indicator.setAttribute("aria-label", status); indicator.title = status;
+        };
+        update(); battery.addEventListener("levelchange", update); battery.addEventListener("chargingchange", update);
+      } catch { indicator.setAttribute("aria-label", "Battery status unavailable"); indicator.title = "Battery status unavailable"; }
+    }
+    tick(); setInterval(tick, 1000); initBatteryStatus(); boot();
   </script>
 </body>
 </html>
