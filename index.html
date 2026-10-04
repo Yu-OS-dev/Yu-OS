@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#d9e7f6">
+  <title>Yu-OS</title>
+  <style>
+    :root{font-family:"Segoe UI",system-ui,sans-serif;color:#17243b;font-synthesis:none}*{box-sizing:border-box}body{margin:0;height:100vh;overflow:hidden;background:#b7d9ee}button,input{font:inherit}.desktop{height:100%;position:relative;isolation:isolate;background:radial-gradient(ellipse at 73% 49%,#e4f5f8 0 12%,transparent 32%),radial-gradient(ellipse at 69% 53%,#72c5d6 0 18%,transparent 42%),linear-gradient(135deg,#bddff1 0%,#93cbe7 44%,#d2e8f5 100%)}.desktop:before,.desktop:after{content:"";position:absolute;z-index:-1;border-radius:50%;filter:blur(1px)}.desktop:before{width:65vw;height:48vw;left:38%;top:15%;background:linear-gradient(145deg,#ffffffaa,#63aeca99);transform:rotate(-31deg)}.desktop:after{width:56vw;height:42vw;left:44%;top:39%;background:linear-gradient(30deg,#267aa899,#e9f9f788);transform:rotate(22deg)}.desktop-icons{position:absolute;top:20px;left:18px;display:grid;gap:14px}.desk-icon{width:78px;padding:8px 3px;border:1px solid transparent;border-radius:6px;background:transparent;color:#163044;text-shadow:0 1px 3px #fff;text-align:center;cursor:pointer}.desk-icon:hover,.desk-icon:focus{background:#ffffff50;border-color:#ffffff75}.desk-icon span{display:block;font-size:30px;margin-bottom:5px}.window{position:absolute;left:50%;top:47%;transform:translate(-50%,-50%);width:min(1020px,calc(100vw - 48px));height:min(680px,calc(100vh - 105px));min-height:340px;background:#f8f9fbee;border:1px solid #ffffffd9;border-radius:12px;box-shadow:0 24px 80px #18345142,0 2px 8px #18345124;overflow:hidden;display:flex;flex-direction:column;backdrop-filter:blur(24px)}.titlebar{height:42px;display:flex;align-items:center;padding:0 10px 0 15px;gap:10px;background:#f5f7f9}.brand{font-size:13px;font-weight:600;color:#34445a;flex:1}.win-controls{display:flex;gap:7px}.win-controls button{width:36px;height:28px;border:0;border-radius:5px;background:transparent;color:#4c5a6e}.win-controls button:hover{background:#e7ebf0}.win-controls .close:hover{background:#e81123;color:#fff}.tabs{height:42px;display:flex;align-items:end;gap:5px;padding:0 10px;background:#f5f7f9}.tab{height:34px;width:190px;padding:0 11px;display:flex;align-items:center;gap:8px;border-radius:7px 7px 0 0;background:#fff;color:#35445b;font-size:13px;box-shadow:0 -1px 0 #e0e5eb}.tab .dot{width:14px;height:14px;border-radius:50%;background:conic-gradient(#4285f4 0 25%,#34a853 0 50%,#fbbc05 0 75%,#ea4335 0)}.toolbar{display:flex;align-items:center;gap:8px;padding:9px 15px;border-top:1px solid #e9edf1;background:#fff}.toolbtn{width:32px;height:32px;border:0;border-radius:6px;background:transparent;color:#536176;font-size:18px;cursor:pointer}.toolbtn:hover{background:#eef2f6}.address{height:36px;display:flex;align-items:center;gap:9px;padding:0 12px;flex:1;border-radius:8px;background:#f1f4f7;border:1px solid #e4e9ee}.address:focus-within{background:white;border-color:#7ca9e8;box-shadow:0 0 0 2px #7ca9e833}.address .lock{color:#528b67}.address input{min-width:0;flex:1;border:0;outline:0;background:transparent;font-size:13px;color:#334259}.address button{border:0;background:transparent;color:#62738b;cursor:pointer}.go{height:34px;padding:0 14px;border:0;border-radius:7px;background:#1768d2;color:#fff;cursor:pointer}.go:hover{background:#0e58bb}.view{position:relative;flex:1;margin:0 9px 9px;border-radius:6px;overflow:hidden;background:white;border:1px solid #e5e9ed}.view iframe{width:100%;height:100%;border:0;background:#fff}.welcome{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:25px;background:radial-gradient(ellipse at 50% 37%,#edf6ff,white 62%)}.welcome.hidden{display:none}.welcome .mark{font-size:44px;margin-bottom:12px}.welcome h1{margin:0 0 8px;font-size:27px;font-weight:600;letter-spacing:-.5px}.welcome p{max-width:420px;margin:0;color:#65748a;font-size:14px;line-height:1.6}.suggestions{display:flex;gap:9px;margin-top:22px;flex-wrap:wrap;justify-content:center}.suggestions button{padding:9px 13px;border:1px solid #e0e6ee;border-radius:8px;background:#fff;color:#34465f;cursor:pointer}.suggestions button:hover{background:#f3f8ff;border-color:#aac7ef}.status{height:25px;padding:4px 14px;color:#6c788a;font-size:11px;background:#fbfcfd}.taskbar{position:absolute;bottom:0;left:0;right:0;height:58px;display:flex;align-items:center;justify-content:center;gap:5px;background:#f4f7f9d9;border-top:1px solid #ffffffa8;backdrop-filter:blur(24px)}.taskapp{height:42px;min-width:44px;padding:0 10px;border:0;border-radius:7px;background:transparent;font-size:20px;cursor:pointer}.taskapp:hover{background:#ffffffae}.taskapp.start{font-size:22px;color:#1683e7}.taskapp.active{box-shadow:inset 0 -3px #3888dd}.tray{position:absolute;right:17px;display:flex;align-items:center;gap:13px;color:#34445a;font-size:12px}.tray .time{text-align:right;line-height:1.35}.toast{position:absolute;right:18px;bottom:72px;padding:10px 14px;border-radius:8px;background:#26364de8;color:white;font-size:12px;opacity:0;transform:translateY(8px);transition:.2s;pointer-events:none}.toast.show{opacity:1;transform:translateY(0)}@media(max-width:620px){.window{width:calc(100vw - 16px);height:calc(100vh - 90px);top:48%}.desktop-icons{top:8px;left:8px}.desk-icon{width:62px;font-size:11px}.tabs{padding-left:7px}.tab{width:145px}.toolbar{padding:7px}.tray{right:9px;gap:8px}.taskbar{justify-content:flex-start;padding-left:12px}.taskapp{min-width:38px;padding:0 7px}}
+  </style>
+  <style>
+    .desktop.dark{background:radial-gradient(ellipse at 70% 45%,#26374f 0 15%,transparent 43%),linear-gradient(135deg,#101927,#1e2b3e 58%,#26364a);color:#edf3fb}.desktop.dark:before{background:linear-gradient(145deg,#8297ad55,#344e6c77)}.desktop.dark:after{background:linear-gradient(30deg,#101b2dcc,#657b9566)}.desktop.dark .desk-icon{color:#f2f6fc;text-shadow:0 1px 3px #101927}.desktop.dark .window{background:#1e2938f2;border-color:#526074;color:#edf3fb}.desktop.dark .titlebar,.desktop.dark .tabs{background:#202c3b}.desktop.dark .brand,.desktop.dark .win-controls button,.desktop.dark .toolbtn{color:#d9e3ef}.desktop.dark .tab{background:#2c394a;color:#edf3fb;box-shadow:0 -1px 0 #526074}.desktop.dark .toolbar,.desktop.dark .status{background:#263345;color:#c2cede;border-color:#3d4a5c}.desktop.dark .address{background:#1b2634;border-color:#435267}.desktop.dark .address input{color:#edf3fb}.desktop.dark .view{background:#182331;border-color:#455366}.desktop.dark .taskbar{background:#172231e8;border-color:#49586b}.desktop.dark .taskapp{color:#eff5fb}.desktop.dark .tray{color:#eff5fb}.desktop.dark .welcome,.desktop.dark .internal-page{background:radial-gradient(ellipse at 50% 30%,#2b3c51,#1a2533 70%);color:#edf3fb}.desktop.dark .welcome p,.desktop.dark .internal-page p,.desktop.dark .history-time{color:#b5c1d0}.desktop.dark .suggestions button,.desktop.dark .setting-card,.desktop.dark .history-row{background:#253346;border-color:#435267;color:#edf3fb}.desktop.dark .switch{accent-color:#3988e8}.internal-page{position:absolute;inset:0;overflow:auto;padding:clamp(24px,6vw,64px);background:radial-gradient(ellipse at 50% 30%,#edf6ff,white 70%);color:#1c2a3e}.internal-page .page-wrap{width:min(700px,100%);margin:0 auto}.internal-page .eyebrow{color:#4383ce;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}.internal-page h1{margin:8px 0 6px;font-size:30px;font-weight:600}.internal-page p{color:#65748a}.setting-card,.history-row{margin-top:18px;padding:18px 20px;border:1px solid #e0e7ef;border-radius:12px;background:#fff}.setting-row{display:flex;align-items:center;justify-content:space-between;gap:18px}.setting-row strong,.history-title{display:block;font-size:15px}.setting-row small{display:block;margin-top:5px;color:#738197}.setting-row input{width:20px;height:20px;cursor:pointer}.history-list{display:grid;gap:9px;margin-top:22px}.history-row{display:flex;align-items:center;gap:13px;margin:0;padding:12px 15px}.history-row button{flex:1;min-width:0;text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;border:0;background:transparent;color:#1768d2;cursor:pointer}.history-time{font-size:12px;color:#778397;white-space:nowrap}.page-actions{display:flex;gap:10px;margin-top:20px}.page-actions button,.clear-history{padding:9px 13px;border:1px solid #dce4ed;border-radius:8px;background:#fff;color:#34465f;cursor:pointer}.internal-page .empty{padding:24px;text-align:center;color:#778397;border:1px dashed #ccd5e0;border-radius:10px}
+  </style>
+</head>
+<body>
+  <main class="desktop">
+    <div class="desktop-icons">
+      <button class="desk-icon" id="browserShortcut"><span>🌐</span>Yu Browser</button>
+      <button class="desk-icon" data-url="https://www.youtube.com"><span>▶️</span>YouTube</button>
+      <button class="desk-icon" data-url="https://open.spotify.com"><span>🎵</span>Spotify</button>
+      <button class="desk-icon" id="aboutShortcut"><span>🖥️</span>This PC</button>
+    </div>
+    <section class="window" aria-label="Yu Browser">
+      <div class="titlebar"><div class="brand">🌐 &nbsp;Yu Browser</div><div class="win-controls"><button aria-label="Minimize">—</button><button aria-label="Maximize">□</button><button class="close" aria-label="Close">×</button></div></div>
+      <div class="tabs"><div class="tab"><span class="dot"></span><span id="tabTitle">New tab</span></div><button class="toolbtn" aria-label="New tab">＋</button></div>
+      <form class="toolbar" id="navForm"><button class="toolbtn" type="button" id="back" aria-label="Back">‹</button><button class="toolbtn" type="button" id="forward" aria-label="Forward">›</button><button class="toolbtn" type="button" id="reload" aria-label="Reload">⟳</button><label class="address"><span class="lock">●</span><input id="address" autocomplete="url" spellcheck="false" placeholder="Search or enter a website address" aria-label="Address"></label><button class="go" type="submit">Go</button></form>
+      <div class="view"><iframe id="browserFrame" title="Browser page" hidden></iframe><div class="welcome" id="welcome"><div class="mark">🌤️</div><h1>Good afternoon</h1><p>Welcome to Yu Browser. Open a built-in app, check your history, or change browser settings.</p><div class="suggestions"><button data-url="https://www.youtube.com">▶️ YouTube</button><button data-url="https://open.spotify.com">🎵 Spotify</button><button data-internal="history">🕘 History</button><button data-internal="settings">⚙️ Settings</button></div></div><div class="internal-page" id="internalPage" hidden></div></div>
+      <div class="status" id="status">Ready · Scramjet browser</div>
+    </section>
+    <div class="taskbar"><button class="taskapp start" aria-label="Start">⊞</button><button class="taskapp" title="Search">🔎</button><button class="taskapp active" id="taskBrowser" title="Yu Browser">🌐</button><button class="taskapp" title="YouTube" data-url="https://www.youtube.com">▶️</button><button class="taskapp" title="Spotify" data-url="https://open.spotify.com">🎵</button><button class="taskapp" title="Files">📁</button><button class="taskapp" title="Settings" data-internal="settings">⚙️</button><div class="tray"><span>⌃</span><span>◖</span><span>◧</span><div class="time"><div id="clock">--:--</div><div id="date">---</div></div></div></div>
+    <div class="toast" id="toast">Yu-OS is ready</div>
+  </main>
+  <script>
+    const $ = (id) => document.getElementById(id);
+    let controller, frame, directMode = false;
+    const address = $("address"), iframe = $("browserFrame"), welcome = $("welcome"), internalPage = $("internalPage");
+    let currentInternal = "";
+    let darkMode = false;
+    try { darkMode = localStorage.getItem("yu-dark-mode") === "true"; } catch {}
+    document.querySelector(".desktop").classList.toggle("dark", darkMode);
+    function readVisits() { try { return JSON.parse(localStorage.getItem("yu-browser-history") || "[]"); } catch { return []; } }
+    function saveVisit(url, title) {
+      const visits = readVisits(); visits.unshift({ url, title, time: Date.now() });
+      try { localStorage.setItem("yu-browser-history", JSON.stringify(visits.slice(0, 100))); } catch {}
+    }
+    function setPageChrome(title, locationText, statusText) {
+      $("tabTitle").textContent = title; address.value = locationText; $("status").textContent = statusText;
+    }
+    function openInternal(page, record = true) {
+      currentInternal = page;
+      const route = `yu://${page}`;
+      if (record) saveVisit(route, page === "settings" ? "Settings" : "History");
+      welcome.classList.add("hidden"); iframe.hidden = true; internalPage.hidden = false;
+      if (page === "settings") {
+        setPageChrome("Settings", route, "Yu Browser settings");
+        internalPage.innerHTML = `<div class="page-wrap"><div class="eyebrow">Yu Browser</div><h1>Settings</h1><p>Make the browser feel right for you.</p><div class="setting-card"><div class="setting-row"><div><strong>Dark mode</strong><small>Use a darker theme for the Yu-OS desktop and browser.</small></div><input class="switch" id="darkModeToggle" type="checkbox" aria-label="Turn dark mode on or off"></div></div><div class="page-actions"><button type="button" data-internal="history">Open history</button><button type="button" data-internal="home">Back to home</button></div></div>`;
+        $("darkModeToggle").checked = darkMode;
+        $("darkModeToggle").addEventListener("change", (event) => {
+          darkMode = event.target.checked;
+          document.querySelector(".desktop").classList.toggle("dark", darkMode);
+          try { localStorage.setItem("yu-dark-mode", String(darkMode)); } catch {}
+        });
+      } else {
+        setPageChrome("History", route, "Recently visited");
+        internalPage.innerHTML = `<div class="page-wrap"><div class="eyebrow">Yu Browser</div><h1>History</h1><p>Your recent pages are saved on this device.</p><div class="page-actions"><button type="button" data-internal="home">Back to home</button><button type="button" class="clear-history" id="clearHistory">Clear history</button></div><div class="history-list" id="historyList"></div></div>`;
+        const list = $("historyList"), visits = readVisits();
+        if (!visits.length) list.innerHTML = `<div class="empty">No pages in your history yet.</div>`;
+        visits.forEach((visit) => {
+          const row = document.createElement("div"); row.className = "history-row";
+          const link = document.createElement("button"); link.type = "button"; link.textContent = visit.title || visit.url; link.title = visit.url; link.dataset.visit = visit.url;
+          const time = document.createElement("span"); time.className = "history-time"; time.textContent = new Date(visit.time).toLocaleString();
+          row.append(link, time); list.append(row);
+        });
+        $("clearHistory").addEventListener("click", () => { try { localStorage.removeItem("yu-browser-history"); } catch {} openInternal("history", false); });
+      }
+    }
+    function navigateTo(value) {
+      const input = value.trim();
+      if (/^yu:\/\/(settings|history)$/i.test(input)) { openInternal(input.slice(5).toLowerCase()); return; }
+      if (/^yu:\/\/home$/i.test(input)) { currentInternal = ""; internalPage.hidden = true; iframe.hidden = true; welcome.classList.remove("hidden"); setPageChrome("New tab", "", "Ready · Connected to Scramjet"); return; }
+      const url = parseAddress(input); if (!url) return;
+      try {
+        const parsed = new URL(url);
+        if (frame) frame.go(parsed.href);
+        else if (directMode && ["www.youtube.com", "open.spotify.com"].includes(parsed.hostname)) {
+          window.open(parsed.href, "_blank", "noopener,noreferrer"); saveVisit(parsed.href, parsed.hostname); notify(`Opened ${parsed.hostname} in a new tab`); return;
+        } else iframe.src = parsed.href;
+        currentInternal = ""; internalPage.hidden = true; iframe.hidden = false; welcome.classList.add("hidden");
+        setPageChrome(parsed.hostname, parsed.href, directMode ? `Direct browsing · ${parsed.hostname}` : `Browsing · ${parsed.hostname}`); saveVisit(parsed.href, parsed.hostname);
+      } catch { notify("Enter a valid website address"); }
+    }
+    function notify(message) { const toast = $("toast"); toast.textContent = message; toast.classList.add("show"); setTimeout(() => toast.classList.remove("show"), 2200); }
+    function parseAddress(value) {
+      const text = value.trim();
+      if (!text) return null;
+      if (/^(https?:\/\/|about:|yu:\/\/)/i.test(text)) return text;
+      if (/^[\w-]+\.[a-z]{2,}([/:?#]|$)/i.test(text)) return `https://${text}`;
+      return `https://www.google.com/search?q=${encodeURIComponent(text)}`;
+    }
+    async function boot() {
+      try {
+        if (!window.isSecureContext || !("serviceWorker" in navigator)) throw new Error("Scramjet needs localhost or HTTPS and service worker support.");
+        const registration = await navigator.serviceWorker.register("/sw.js", { scope: "/", updateViaCache: "none" });
+        await navigator.serviceWorker.ready;
+        if (!navigator.serviceWorker.controller) await new Promise(resolve => navigator.serviceWorker.addEventListener("controllerchange", resolve, { once: true }));
+        for (const src of ["/scram/scramjet.js", "/controller/controller.api.js", "/utils/scramjet-utils.js"]) {
+          await new Promise((resolve, reject) => { const script = document.createElement("script"); script.src = src; script.onload = resolve; script.onerror = () => reject(new Error(`Could not load ${src}`)); document.head.append(script); });
+        }
+        const worker = navigator.serviceWorker.controller ?? registration.active;
+        const { default: LibcurlClient } = await import("/libcurl/index.mjs");
+        const scheme = location.protocol === "https:" ? "wss:" : "ws:";
+        controller = new window.$scramjetController.Controller({ serviceworker: worker, transport: new LibcurlClient({ wisp: `${scheme}//${location.host}/wisp/` }), config: { scramjetPath: "/scram/scramjet.js", wasmPath: "/scram/scramjet.wasm", injectPath: "/controller/controller.inject.js" } });
+        await controller.wait();
+        frame = controller.createFrame(iframe);
+        setInterval(() => navigator.serviceWorker.controller?.postMessage("keepalive"), 15000);
+        $("status").textContent = "Ready · Connected to Scramjet";
+      } catch (error) {
+        console.error(error);
+        directMode = true;
+        $("status").textContent = "Direct mode · Web apps still work; Scramjet proxy needs its server";
+      }
+    }
+    $("navForm").addEventListener("submit", (event) => {
+      event.preventDefault(); navigateTo(address.value);
+    });
+    document.addEventListener("click", (event) => {
+      const urlButton = event.target.closest("[data-url]");
+      const internalButton = event.target.closest("[data-internal]");
+      const visitButton = event.target.closest("[data-visit]");
+      if (urlButton) navigateTo(urlButton.dataset.url);
+      else if (internalButton) internalButton.dataset.internal === "home" ? navigateTo("yu://home") : openInternal(internalButton.dataset.internal);
+      else if (visitButton) navigateTo(visitButton.dataset.visit);
+    });
+    $("back").addEventListener("click", () => { if (currentInternal) navigateTo("yu://home"); else if (frame) frame.back(); else iframe.contentWindow?.history.back(); });
+    $("forward").addEventListener("click", () => { if (frame) frame.forward(); else iframe.contentWindow?.history.forward(); });
+    $("reload").addEventListener("click", () => { if (currentInternal) openInternal(currentInternal, false); else if (frame) frame.reload(); else iframe.contentWindow?.location.reload(); });
+    $("browserShortcut").addEventListener("click", () => address.focus()); $("taskBrowser").addEventListener("click", () => address.focus());
+    $("aboutShortcut").addEventListener("click", () => notify("Yu-OS · A little desktop for the web"));
+    document.querySelector(".close").addEventListener("click", () => notify("Browser minimized to the taskbar"));
+    function tick() { const now = new Date(); $("clock").textContent = now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }); $("date").textContent = now.toLocaleDateString([], { month: "numeric", day: "numeric", year: "numeric" }); }
+    tick(); setInterval(tick, 1000); boot();
+  </script>
+</body>
+</html>
