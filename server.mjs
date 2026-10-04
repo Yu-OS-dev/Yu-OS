@@ -32,4 +32,5 @@ server.on("upgrade", (req, socket, head) => {
   }
   socket.end();
 });
-server.listen(8080, () => console.log("Yu-OS is running at http://localhost:8080"));
+const port = Number(process.env.PORT) || 8080;
+server.listen(port, "0.0.0.0", () => console.log(`Yu-OS is running on port ${port}`));

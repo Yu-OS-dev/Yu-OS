@@ -16,3 +16,9 @@ npm start
 ```
 
 Open [http://localhost:8080](http://localhost:8080). The proxy needs localhost or HTTPS because Scramjet uses a service worker, plus the Wisp endpoint served by this app.
+
+## Keep the Scramjet site online
+
+The `render.yaml` file lets Render deploy this app as a web service. In Render, choose **New → Blueprint**, connect this GitHub repository, and let it use the settings in `render.yaml`. When deployment finishes, open the `onrender.com` address Render gives you. Scramjet should connect there without the Codespace running.
+
+This uses Render's free plan. Free services sleep after being idle, so the first visit after a while can take up to about a minute to wake the site. Render supports the HTTPS and WebSocket connections this app needs. If you already have a public website address, add that address to the Render service's **Settings → Custom Domains** after deployment.
